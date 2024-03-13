@@ -1,7 +1,5 @@
 // Server.js
-const http = require("http").createServer().listen(process.env.PORT);
 const io = require("socket.io");
-io.listen(http);
 const handleNewUser = require("./newUserHandler");
 const handleDisconnect = require("./disconnectHandler");
 const handleChatMessage = require("./chatMessageHandler");
