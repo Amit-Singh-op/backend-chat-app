@@ -1,5 +1,5 @@
 // Server.js
-const io = require("socket.io");
+const { Server: SocketServer } = require("socket.io");
 const handleNewUser = require("./newUserHandler");
 const handleDisconnect = require("./disconnectHandler");
 const handleChatMessage = require("./chatMessageHandler");
@@ -15,7 +15,9 @@ class Server {
     this.users = {};
 
     // Create a new Socket.IO server instance
-    this.server = io(this.port);
+    this.server = new SocketServer({ cors: { origin: "*" } });
+
+    this.server.listen(3000);
   }
 
   start() {
